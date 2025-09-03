@@ -137,11 +137,11 @@ combined_data <- file_paths %>%
   lapply(read.csv) %>%
   bind_rows(.id = "source_file") 
 
-output_file <- "BTC_PIN_combined_results.csv"
+output_file <- "BTC_PIN_combined.csv"
 write.csv(combined_data, output_file, row.names = FALSE)
 
 #######dummy############
-file_path <- "D:/NSYSU FIN/bitcoin/for_git/BTC_PIN_combined_results.csv"
+file_path <- "D:/NSYSU FIN/bitcoin/for_git/BTC_PIN_combined.csv"
 data <- read.csv(file_path)
 
 # 定義 FOMC 公告日期和時間
@@ -307,4 +307,5 @@ model3 <- lm(Return ~ PIN*FOMC_Before + PIN*FOMC_During +
 
 nw <- NeweyWest(model3, lag = 4, prewhite = FALSE, adjust = TRUE)
 coeftest(model3, vcov. = nw)
+
 
